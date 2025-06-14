@@ -1,21 +1,26 @@
-name: Deploy to Firebase
-on: [push]
+name: Deploy to Firebase Hosting
+on:
+  push:
+    branches: [main]
+
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4  # Checks out your repo
+      - uses: actions/checkout@v4
 
-      - name: Verify files        # Debugging step
-        run: ls -la               # Lists files to confirm package.json exists
-
-      - name: Install Node.js
+      # Install Node.js (required for Firebase CLI)
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '18'
 
-      - name: Install dependencies
-        run: npm install          # Runs in root by default
+      # Install Firebase CLI globally
+      - name: Install Firebase Tools
+        run: npm install -g firebase-tools
 
+      # Deploy to Firebase
       - name: Deploy to Firebase
-        run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
