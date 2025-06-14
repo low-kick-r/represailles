@@ -17,8 +17,5 @@ jobs:
       - name: Install dependencies
         run: npm install          # Runs in root by default
 
-      - name: Build
-        run: npm run build        # Your build command
-
       - name: Deploy to Firebase
         run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
