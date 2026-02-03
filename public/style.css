@@ -1,0 +1,17 @@
+body {
+    font-family: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
+    font-weight: normal;
+    font-size: 52px;
+}
+
+#header {
+    width: 50%;
+    height: 1%;
+}
+
+.textbox {
+    width: 75%;
+    height: 50%;
+    border: 2px solid red;
+    padding-bottom: 20px;
+}

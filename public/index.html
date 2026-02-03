@@ -8,7 +8,7 @@
             Elle s'intéresse à la question de la lutte pour parvenir à la violence, au fascisme et à la révolution."/>
         <meta charset="utf-8"/>
         
-        <!-- Open Graph-->
+        <!-- Open Graph -->
         <meta 
             property="og.image"
             content="https://represailles.fr/og-image"/>
@@ -22,10 +22,40 @@
 
         <link rel="icon" href="favicon.png" type="image/png"/>
         <title>REPRÉSAILLES</title>
+
+        <!-- CSS-->
+        <link rel="stylesheet" href="style.css">
+
+        <!-- MOCHA TESTS-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js"></script>
+        <script>
+            mocha.setup('bdd');
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
+        <script>
+            let assert = chai.assert;
+        </script>
+         
+         
+
     </head>
     <body>
         <a href="https://represailles.fr/">
             LE SITE LE PLUS COOL DU MONDE</a>
-        <h1>UPDATE 2</h1>
+        <h1>REPRÉSAILLES</h1>
+        <div id="header">Je suis une ID unique.</div>
+        <div class="textbox">Update 4 yayy</div>
+
+        <script src="functions.js"></script>
+        
+        <script src="test.js"></script>
+
+        <div id="mocha"></div>
+
+        <script>
+            mocha.run();
+        </script>
+
     </body>
 </html>
