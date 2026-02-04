@@ -1,7 +1,9 @@
 body {
+    height: 100vh;
     font-family: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
     font-weight: normal;
     font-size: 52px;
+    background-color: #FFDBAE;
 }
 
 #header {
@@ -14,4 +16,19 @@ body {
     height: 50%;
     border: 2px solid red;
     padding-bottom: 20px;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container img {
+    width: 25vw;
+}
+
+img:hover {
+    background-color: blue;
 }
