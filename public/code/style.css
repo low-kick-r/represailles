@@ -7,26 +7,18 @@ body {
     
 }
 
-.window {
-    display: grid;
-    height: 100vh;
-    justify-items: center;
-    align-items: center;
-    
-}
 
-.window .logo {
-    width: min(95vw, 95vh);
+/* GENERAL */
+
+.logo {
     aspect-ratio: 1;
     object-fit: contain;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    z-index: 0;
-    transform: translateY(-5vh);
-    /* border: 2px solid red; */
-    }
+    border: 2px solid red;
+}
+
 
 .logo-link{
     text-decoration: none;
@@ -35,7 +27,7 @@ body {
 
 .logo .titre{
     font-family: "Bodoni MT";
-    font-size: 8vmin;
+    font-size: 8cqmin;
     bottom: 0;
     opacity: 0;
     position: absolute;
@@ -45,13 +37,66 @@ body {
 }
 
 .logo img {
-    height: calc(0.75 * min(95vw, 95vh));
-    aspect-ratio: 2/3;
-    object-fit: cover;
+    height: 75%;
+    width: auto;
+    object-fit: contain;
     /* background: rgba(89, 0, 255, 0.2); */
     transition: transform 0.5s ease;    
 }
 
+
+/* INDEX */
+
+.window_index {
+    display: grid;
+    height: 100vh;
+    justify-items: center;
+    align-items: center;
+}
+
+.window_index .logo {
+    width: min(95vw, 95vh);
+    transform: translateY(-5vh);
+}
+
+
+
+/* HOME */
+
+.window_home {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 9fr 1fr;
+    grid-template-areas: 
+    "compagnie" "spectacles" "membres" "contact"
+    "footer" "footer" "footer" "footer";
+    justify-items: center;
+    align-items: center;
+}
+
+.window_home .compagnie {
+    grid-area: compagnie;
+}
+
+.window_home .spectacles {
+    grid-area: spectacles;
+}
+
+
+.window_home .membres {
+    grid-area: membres;
+}
+
+
+.window_home .contact {
+    grid-area: contact;
+}
+
+
+
+/* HOVER & TOUCH */
 
 @media (hover: hover){
     .logo:hover .bottom { transform: translate(70%, 16%); }
