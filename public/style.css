@@ -4,31 +4,59 @@ body {
     font-weight: normal;
     font-size: 52px;
     background-color: #FFDBAE;
+    
 }
 
-#header {
-    width: 50%;
-    height: 1%;
-}
-
-.textbox {
-    width: 75%;
-    height: 50%;
-    border: 2px solid red;
-    padding-bottom: 20px;
-}
-
-.container {
+.window {
+    display: grid;
     height: 100vh;
+    justify-items: center;
+    align-items: start;
+    
+}
+
+.window .logo {
+    width: min(95vw, 95vh);
+    aspect-ratio: 1;
+    object-fit: contain;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 0;
+    /* border: 2px solid red; */
+    }
+
+.logo .titre{
+    font-family: "Bodoni MT";
+    font-size: 8vmin;
+    bottom: 0;
+    opacity: 0;
+    position: absolute;
+    z-index: 1;
+    /* background: rgba(255, 0, 0, 0.2); */
+    transition: opacity 0.5s ease;  
 }
 
-.container img {
-    width: 25vw;
+.logo img {
+    height: calc(0.75 * min(95vw, 95vh));
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    /* background: rgba(89, 0, 255, 0.2); */
+    transition: transform 0.5s ease;    
 }
 
-img:hover {
-    background-color: blue;
+
+.logo:hover .bottom {
+    transform: translate(70%, 16%);
 }
+
+.logo:hover .top {
+    transform: translate(-70%, -16%)
+}
+
+.logo:hover .titre {
+    opacity: 1;
+}
+
+
