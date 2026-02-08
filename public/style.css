@@ -53,21 +53,12 @@ body {
 }
 
 
-.logo:hover .bottom {
-    transform: translate(70%, 16%);
+@media (hover: hover){
+    .logo:hover .bottom { transform: translate(70%, 16%); }
+    .logo:hover .top { transform: translate(-70%, -16%); }
+    .logo:hover .titre { opacity: 1; }
 }
 
-.logo:hover .top {
-    transform: translate(-70%, -16%)
-}
-
-.logo:hover .titre {
-    opacity: 1;
-}
-
-.logo-link{
-    text-decoration: none;
-    color: inherit;
-}
-
-
+.logo.touched .bottom { transform: translate(70%, 16%); }
+.logo.touched .top { transform: translate(-70%, -16%); }
+.logo.touched .titre { opacity: 1; }
