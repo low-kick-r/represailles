@@ -26,6 +26,7 @@ body {
 .logo-link{
     text-decoration: none;
     color: inherit;
+    display: contents;
 }
 
 .logo .titre{

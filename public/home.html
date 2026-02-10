@@ -42,39 +42,49 @@
     </head>
     <body>
         <div class="window_home">
-            <div class="logo compagnie">
-                <img src="assets/bottom.png" class="bottom"></img>
-                <img src="assets/top.png" class="top"></img>
-                <div class="titre">la compagnie</div>
-            </div>
-            <div class="logo spectacles">
-                <img src="assets/bottom.png" class="bottom"></img>
-                <img src="assets/top.png" class="top"></img>
-                <div class="titre">les spectacles</div>
-            </div>
-            <div class="logo membres">
-                <div class="bottom-wrapper">
+            <a href="compagnie.html" class="logo-link">
+                <div class="logo compagnie">
                     <img src="assets/bottom.png" class="bottom"></img>
-                </div>
-                <img src="assets/top.png" class="top"></img>
-                <div class="titre">les artistes</div>
-            </div>
-            <div class="logo contact">
-                <div class="bottom-wrapper">
-                    <img src="assets/bottom.png" class="bottom"></img>
-                </div>
-                <div class="top-wrapper">
                     <img src="assets/top.png" class="top"></img>
+                    <div class="titre">la compagnie</div>
                 </div>
-                <div class="titre">contact</div>
-            </div>
+            </a>
+            <a href="spectacles.html" class="logo-link">
+                <div class="logo spectacles">
+                    <img src="assets/bottom.png" class="bottom"></img>
+                    <img src="assets/top.png" class="top"></img>
+                    <div class="titre">les spectacles</div>
+                </div>
+            </a>
+            <a href="membres.html" class="logo-link">
+                <div class="logo membres">
+                    <div class="bottom-wrapper">
+                        <img src="assets/bottom.png" class="bottom"></img>
+                    </div>
+                    <img src="assets/top.png" class="top"></img>
+                    <div class="titre">les artistes</div>
+                </div>
+            </a>
+            <a href="contact.html" class="logo-link">
+                <div class="logo contact">
+                    <div class="bottom-wrapper">
+                        <img src="assets/bottom.png" class="bottom"></img>
+                    </div>
+                    <div class="top-wrapper">
+                        <img src="assets/top.png" class="top"></img>
+                    </div>
+                    <div class="titre">contact</div>
+                </div>
+            </a>
             <div class="paragraph">
                 Représailles est une compagnie de théâtre vraiment super méga cool quand on y pense.
             </div>
         </div>
-    
-        <script src="code/clones.js"></script>
+        
 
+        <!-- JS SCRIPTS -->
+        <script src="code/clones.js"></script>
+        <script src="code/touch_handling.js"></script>
         <div id="mocha"></div>
         <script>
             mocha.run();
