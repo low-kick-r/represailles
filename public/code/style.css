@@ -223,14 +223,14 @@ body {
     .logo:hover .titre { opacity: 1; }
 }
 
-.logo .touched .bottom { 
+.logo.touched .bottom { 
         transform:  translate(var(--bottom-translate-x), var(--bottom-translate-y)) 
                     rotate(var(--bottom-angle)) 
                     scale(var(--bottom-scale, 1))
                     rotateY(var(--bottom-rotateY, 0));
                     opacity: 1;
                 }
-    .logo .touched .top { 
+    .logo.touched .top { 
         transform:  translate(var(--top-translate-x), var(--top-translate-y)) 
                     rotate(var(--top-angle)) 
                     scale(var(--top-scale, 1))
@@ -238,4 +238,4 @@ body {
 ;
         opacity: 1;
     }
-    .logo .touched .titre { opacity: 1; }
+    .logo.touched .titre { opacity: 1; }
