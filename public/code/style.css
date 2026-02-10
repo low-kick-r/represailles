@@ -217,9 +217,8 @@ body {
                     rotate(var(--top-angle)) 
                     scale(var(--top-scale, 1))
                     rotateY(var(--top-rotateY, 0));
-;
-        opacity: 1;
-    }
+                    opacity: 1;
+                }
     .logo:hover .titre { opacity: 1; }
 }
 
@@ -229,13 +228,12 @@ body {
                     scale(var(--bottom-scale, 1))
                     rotateY(var(--bottom-rotateY, 0));
                     opacity: 1;
-                }
-    .logo.touched .top { 
+}
+.logo.touched .top { 
         transform:  translate(var(--top-translate-x), var(--top-translate-y)) 
                     rotate(var(--top-angle)) 
                     scale(var(--top-scale, 1))
                     rotateY(var(--top-rotateY, 0));
-;
-        opacity: 1;
-    }
-    .logo.touched .titre { opacity: 1; }
+                    opacity: 1;
+}
+.logo.touched .titre { opacity: 1; }
