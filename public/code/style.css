@@ -1,22 +1,25 @@
 body {
     height: 100vh;
+    width: 100vw;
     font-family: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
     font-weight: normal;
-    font-size: 52px;
+    font-size: 48px;
     background-color: #FFDBAE;
-    
 }
 
 
 /* GENERAL */
 
 .logo {
+    position: relative;
     aspect-ratio: 1;
     object-fit: contain;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid red;
+    container-type: size;
+    container-name: logo;
+    /* border: 1px solid red; */
 }
 
 
@@ -27,7 +30,7 @@ body {
 
 .logo .titre{
     font-family: "Bodoni MT";
-    font-size: 8cqmin;
+    font-size: max(8cqmin, 20px);
     bottom: 0;
     opacity: 0;
     position: absolute;
@@ -40,8 +43,8 @@ body {
     height: 75%;
     width: auto;
     object-fit: contain;
+    transition: transform 0.5s ease;   
     /* background: rgba(89, 0, 255, 0.2); */
-    transition: transform 0.5s ease;    
 }
 
 
@@ -50,6 +53,7 @@ body {
 .window_index {
     display: grid;
     height: 100vh;
+    width: 100vw;
     justify-items: center;
     align-items: center;
 }
@@ -57,8 +61,13 @@ body {
 .window_index .logo {
     width: min(95vw, 95vh);
     transform: translateY(-5vh);
+    --bottom-translate-x: 70%;
+    --bottom-translate-y: 16%;
+    --bottom-angle: 0;
+    --top-translate-x: -70%;
+    --top-translate-y: -16%;
+    --top-angle: 0;
 }
-
 
 
 /* HOME */
@@ -67,43 +76,165 @@ body {
     display: grid;
     height: 100vh;
     width: 100vw;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 9fr 1fr;
+    grid-template-columns: 1fr repeat(4, 12fr) 1fr;
+    grid-template-rows: 9fr 2fr 1fr;
     grid-template-areas: 
-    "compagnie" "spectacles" "membres" "contact"
-    "footer" "footer" "footer" "footer";
+    "margin-start compagnie spectacles membres contact margin-end"
+    "margin-start paragraph paragraph paragraph paragraph margin-end"
+    "margin-start footer footer footer footer margin-end";
     justify-items: center;
     align-items: center;
 }
 
+
+.window_home .logo {
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+/* WRAPPERS */
+
+.bottom-wrapper img {
+    height: 100%;
+    width: auto;
+}
+
+.bottom-wrapper img:not(:first-child) {
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.top-wrapper img {
+    height: 100%;
+    width: auto;
+}
+
+.top-wrapper img:not(:first-child) {
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* COMPAGNIE */
+
 .window_home .compagnie {
     grid-area: compagnie;
+    --bottom-translate-x: 80%;
+    --bottom-translate-y: -20%;
+    --bottom-angle: -90deg;
+    --top-translate-x: -75%;
+    --top-translate-y: 10%;
+    --top-angle: 90deg;
 }
+
+/* SPECTACLES */
 
 .window_home .spectacles {
     grid-area: spectacles;
+    --bottom-translate-x: 97%;
+    --bottom-translate-y: -31%;
+    --bottom-angle: 90deg;
+    --top-translate-x: -87%;
+    --top-translate-y: 10%;
+    --top-angle: -90deg;
 }
 
+/* MEMBRES */
 
 .window_home .membres {
     grid-area: membres;
+    display: flex;
+    align-items: center;
+    --bottom-translate-x: 0;
+    --bottom-translate-y: -15%;
+    --bottom-angle: 0;
+    --top-translate-x: 0;
+    --top-translate-y: -30%;
+    --top-angle: 0;
+    /* background-color: rgba(255, 255, 0, 0.2); */
 }
 
+.membres .bottom-wrapper {
+    position: relative;
+    height: 75%;
+    width: 100%;
+    /* background-color: rgba(68, 0, 255, 0.2); */
+}
+
+
+
+/* CONTACT */
 
 .window_home .contact {
     grid-area: contact;
+    display: flex;
+    align-items: center;
+    --bottom-translate-x: 90%;
+    --bottom-translate-y: -36%;
+    --bottom-angle: -45deg;
+    --bottom-scale: 0.657;
+    --top-translate-x: -57%;
+    --top-translate-y: -30%;
+    --top-angle: -135deg;
+    --top-scale: 0.657;
+    /* background-color: rgba(150, 0, 150, 0.2); */
 }
 
+.contact .bottom-wrapper {
+    position: relative;
+    height: 75%;
+    width: 100%;
+    /* background-color: rgba(1, 182, 143, 0.2); */
+}
+
+.contact .top-wrapper {
+    position: relative;
+    height: 75%;
+    width: 100%;
+    /* background-color: rgba(1, 13, 182, 0.2); */
+}
+
+/* PARAGRAPHE */
+
+.window_home .paragraph {
+    grid-area: paragraph;
+    font-size: 5vmin;
+}
 
 
 /* HOVER & TOUCH */
 
 @media (hover: hover){
-    .logo:hover .bottom { transform: translate(70%, 16%); }
-    .logo:hover .top { transform: translate(-70%, -16%); }
+    .logo:hover .bottom { 
+        transform:  translate(var(--bottom-translate-x), var(--bottom-translate-y)) 
+                    rotate(var(--bottom-angle)) 
+                    scale(var(--bottom-scale, 1))
+                    rotateY(var(--bottom-rotateY, 0));
+                    opacity: 1;
+                }
+    .logo:hover .top { 
+        transform:  translate(var(--top-translate-x), var(--top-translate-y)) 
+                    rotate(var(--top-angle)) 
+                    scale(var(--top-scale, 1))
+                    rotateY(var(--top-rotateY, 0));
+;
+        opacity: 1;
+    }
     .logo:hover .titre { opacity: 1; }
 }
 
-.logo.touched .bottom { transform: translate(70%, 16%); }
-.logo.touched .top { transform: translate(-70%, -16%); }
-.logo.touched .titre { opacity: 1; }
+.logo .touched .bottom { 
+        transform:  translate(var(--bottom-translate-x), var(--bottom-translate-y)) 
+                    rotate(var(--bottom-angle)) 
+                    scale(var(--bottom-scale, 1))
+                    rotateY(var(--bottom-rotateY, 0));
+                    opacity: 1;
+                }
+    .logo .touched .top { 
+        transform:  translate(var(--top-translate-x), var(--top-translate-y)) 
+                    rotate(var(--top-angle)) 
+                    scale(var(--top-scale, 1))
+                    rotateY(var(--top-rotateY, 0));
+;
+        opacity: 1;
+    }
+    .logo .touched .titre { opacity: 1; }
