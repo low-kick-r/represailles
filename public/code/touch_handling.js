@@ -1,30 +1,66 @@
 "use strict"
 
-const logoLinks = document.querySelector('.logo-link');
+document.addEventListener('DOMContentLoaded', () => {
+
+    const links = document.querySelectorAll('.logo-link');
+
+    let armedLogo = null;
+    let timer = null;
+
+    function resetArmed() {
+        if (!armedLogo) return;
+
+        armedLogo.classList.remove('touched');
+        armedLogo = null;
 
 
-logoLinks.forEach(logoLink => {
-    const logo = logoLink.querySelector('.logo');
-    let touched = false;
-    let resetTimer = null;
-    
-    logoLink.addEventListener('touchstart', function(e){
-        e.preventDefault();
-
-        if (!touched){
-            logo.classList.add('touched');
-            touched = true;
-            resetTimer = setTimeout(function(){
-                logo.classList.remove('touched');
-                touched = false;
-            }, 3000);
-            console.log('resetTimer :>> ', resetTimer);
-            console.log('touched :>> ', touched);
-
-        } else {
-            clearTimeout(resetTimer);
-            window.location.href = logoLink.getAttribute('href');
+        if (timer) {
+            clearTimeout(timer);
+            timer = null;
         }
+    }
+
+    function armLogo(logo){
+        resetArmed();
+        armedLogo = logo;
+        logo.classList.add('touched');
+
+        timer = setTimeout(resetArmed, 3000);
+    }
+
+    function navigate(link) {
+        window.location.href = link.href;
+    }
+
+    links.forEach(link => {
+        link.addEventListener("click", e => e.preventDefault());
     });
 
+
+    links.forEach(link => {
+        const logo = link.querySelector('.logo');
+        if (!logo) return;
+
+        logo.addEventListener('pointerup', (e) => {
+    
+            if (e.pointerType !== 'touch') return;
+    
+            e.preventDefault();
+    
+            if (armedLogo === logo) {
+                resetArmed();
+                navigate(link);
+                return;
+            }
+    
+            armLogo(logo);
+    
+        });
+
+    })
+    
+
+
+    window.addEventListener('pageshow', resetArmed);
+    
 });

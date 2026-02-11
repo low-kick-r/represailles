@@ -24,20 +24,16 @@
         <title>REPRÉSAILLES</title>
 
         <!-- CSS-->
-         <link rel="stylesheet" href="code/style.css">
-
-        <!-- MOCHA TESTS-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js"></script>
+        <link rel="stylesheet" href="code/style.css">
+        
         <script>
-            mocha.setup('bdd');
+            // Force reload au lieu de restaurer depuis le cache
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted) {
+                    window.location.reload();
+                }
+            });
         </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
-        <script>
-            let assert = chai.assert;
-        </script>
-         
-         
 
     </head>
     <body>
@@ -85,10 +81,6 @@
         <!-- JS SCRIPTS -->
         <script src="code/clones.js"></script>
         <script src="code/touch_handling.js"></script>
-        <div id="mocha"></div>
-        <script>
-            mocha.run();
-        </script>
 
     </body>
 </html>
