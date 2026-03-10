@@ -85,8 +85,7 @@ p {
     position: absolute;
     top: 105%;
     font-size: 8.5cqmin;
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .window_index .item img {
@@ -205,8 +204,8 @@ p {
 
 .hamburger {
     position: fixed;
-    top: 1rem;
-    left: 1rem;
+    top: 2rem;
+    left: 2rem;
     cursor: pointer;
     user-select: none;
     z-index: 999;
@@ -304,10 +303,11 @@ p {
 .window_home .item .titre{
     position: absolute;
     font-size: 3.5vmin;
-    top: 100%;
-    opacity: 0;
+    text-align: center;
+    top: 105%;
+    width: 100%;
     z-index: 1;
-    transition: opacity 0.5s ease;  
+    transition: background-color 0.5s ease, color 0.5s ease;  
     /* background: rgba(255, 0, 0, 0.2); */
 }
 
@@ -448,7 +448,10 @@ p {
                     opacity: 1;
                 }
 
-    .item:hover .titre { opacity: 1; }
+    .item:hover .titre { 
+        background-color: black;
+        color: #FFDBAE;
+    }
 
     .item:hover .drawn { opacity: 0; }
 
@@ -478,7 +481,9 @@ p {
                     rotateY(var(--top-rotateY, 0));
                     opacity: 1;
 }
-.item.touched .titre { opacity: 1; }
+.item.touched .titre { 
+    background-color: black;
+    color: #FFDBAE; }
 
 
 .item.touched .drawn {
