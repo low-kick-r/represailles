@@ -23,6 +23,12 @@ function createClones(wrapperSelector, imgClass, cloneConfigs, varPrefix){
     console.log('wrapper :>> ', wrapper);
 }
 
+
+const compagnieTopConfig = [
+    { x: '-85%', y: '0%', angle: '90deg', scale: '1', rotateY: '0'},
+
+]
+
 const membresBottomConfig = [
     { x: '0', y: '-30%', angle: '0', scale: '1', rotateY: '0'},
     { x: '0', y: '0', angle: '0', scale: '1', rotateY: '0'},
@@ -57,5 +63,12 @@ createClones(
     '.contact .top-wrapper',
     '.top',
     contactTopConfig,
+    'top'
+)
+
+createClones(
+    '.compagnie .top-wrapper',
+    '.top',
+    compagnieTopConfig,
     'top'
 )

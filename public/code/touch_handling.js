@@ -2,65 +2,63 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const links = document.querySelectorAll('.logo-link');
+    const items = document.querySelectorAll('.item');
 
-    let armedLogo = null;
+    let armedItem = null;
     let timer = null;
 
     function resetArmed() {
-        if (!armedLogo) return;
+        if (!armedItem) return;
 
-        armedLogo.classList.remove('touched');
-        armedLogo = null;
+        armedItem.classList.remove('touched');
+        armedItem = null;
 
-
-        if (timer) {
-            clearTimeout(timer);
-            timer = null;
-        }
+        clearTimeout(timer);
+        timer = null;
     }
 
-    function armLogo(logo){
+    function armItem(item){
         resetArmed();
-        armedLogo = logo;
-        logo.classList.add('touched');
-
+        armedItem = item;
+        item.classList.add('touched');
         timer = setTimeout(resetArmed, 3000);
     }
-
-    function navigate(link) {
-        window.location.href = link.href;
+    
+    function navigate(item){
+        const link = item.querySelector('a[href]');
+        if (link) {
+            window.location.href = link.getAttribute('href');
+            return true;
+        }
+        else return false;
     }
 
-    links.forEach(link => {
-        link.addEventListener("click", e => e.preventDefault());
-    });
+    items.forEach(item => {
+        item.addEventListener('click', e => e.preventDefault())
+    })
 
+    items.forEach(item => {
+        item.addEventListener('pointerup', (e) => {
 
-    links.forEach(link => {
-        const logo = link.querySelector('.logo');
-        if (!logo) return;
-
-        logo.addEventListener('pointerup', (e) => {
-    
-            if (e.pointerType !== 'touch') return;
-    
-            e.preventDefault();
-    
-            if (armedLogo === logo) {
-                resetArmed();
-                navigate(link);
+            if (e.pointerType !== 'touch') {
+                navigate(item);
                 return;
             }
-    
-            armLogo(logo);
-    
+            
+            e.preventDefault();
+            
+            if (armedItem === item) {
+                if (!item.querySelector('a[href]')) resetArmed();
+                navigate(item);
+                return;
+            }
+
+            armItem(item);
+
         });
-
-    })
-    
-
+    });
 
     window.addEventListener('pageshow', resetArmed);
-    
+
+
 });
