@@ -57,6 +57,20 @@ p {
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
+.nom {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    background-color: black;
+    color: #FFDBAE;
+    text-align: center;
+    padding-block: 3px;
+    width: 100%;
+    font-size: 2.7vmin;
+    z-index: 99;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
 
 
 
@@ -169,6 +183,8 @@ p {
     position: absolute;
     top: 50%;
     left: 0;
+    background-color: black;
+    color: #FFDBAE;
     text-align: center;
     font-size: 3.5cqmin;
     opacity: 0;
@@ -334,10 +350,6 @@ p {
     --top-angle: 90deg;
 }
 
-.compagnie .top-wrapper {
-    position: relative;
-    width: 50%;
-}
 
                 /* SPECTACLES */
 
@@ -409,6 +421,7 @@ p {
 
 .item .bottom-wrapper img {
     width: 100%;
+    display: block;
 }
 
 .bottom-wrapper img:not(:first-child) {
@@ -418,6 +431,7 @@ p {
 
 .item .top-wrapper img {
     width: 100%;
+    display: block;
 }
 
 .top-wrapper img:not(:first-child) {
@@ -457,7 +471,9 @@ p {
 
     .item:hover .raw { opacity: 1; }
 
-    .item:hover #titre { opacity: 1;}
+    .item:hover #titre { opacity: 1; }
+
+    .item:hover .nom { opacity: 1; }
 
     #dossier:hover { 
         background-color: black;
@@ -495,5 +511,9 @@ p {
 }
 
 .item.touched #titre {
+    opacity: 1;
+}
+
+.item.touched .nom {
     opacity: 1;
 }
