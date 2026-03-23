@@ -21,28 +21,29 @@ function createClones(wrapperSelector, imgClass, cloneConfigs, varPrefix){
     });
 
     console.log('wrapper :>> ', wrapper);
+    
 }
 
 
 const compagnieTopConfig = [
-    { x: '-85%', y: '0%', angle: '90deg', scale: '1', rotateY: '0'},
+    { x: '-85%', y: '0%', angle: '90deg', scale: '1', rotateY: '0deg'},
 
 ]
 
 const membresBottomConfig = [
-    { x: '0', y: '-30%', angle: '0', scale: '1', rotateY: '0'},
-    { x: '0', y: '0', angle: '0', scale: '1', rotateY: '0'},
-    { x: '0', y: '15%', angle: '0', scale: '1', rotateY: '0'},
+    { x: '0%', y: '-30%', angle: '0deg', scale: '1', rotateY: '0deg'},
+    { x: '0%', y: '0%', angle: '0deg', scale: '1', rotateY: '0deg'},
+    { x: '0%', y: '15%', angle: '0deg', scale: '1', rotateY: '0deg'},
 ];
 
 const contactBottomConfig = [
     { x: '11%', y: '-36%', angle: '45deg', scale: '0.657', rotateY: '180deg'},
-    { x: '11%', y: '25%', angle: '135deg', scale: '0.657', rotateY: '0'},
+    { x: '11%', y: '25%', angle: '135deg', scale: '0.657', rotateY: '0deg'},
     { x: '90%', y: '25%', angle: '225deg', scale: '0.657', rotateY: '180deg'},
 ];
 
 const contactTopConfig = [
-    { x: '-42%', y: '20%', angle: '45deg', scale: '0.657', rotateY: '0'},
+    { x: '-42%', y: '20%', angle: '45deg', scale: '0.657', rotateY: '0deg'},
 ];
 
 createClones(

@@ -1,64 +1,40 @@
 "use strict"
 
-document.addEventListener('DOMContentLoaded', () => {
-
+if (window.matchMedia('(hover: none').matches) {
+    let lastY = null;
+    let progress = 0;
     const items = document.querySelectorAll('.item');
+    const sensitivity = window.matchMedia('(orientation: portrait)').matches ? 0.002 : 0.01;
 
-    let armedItem = null;
-    let timer = null;
-
-    function resetArmed() {
-        if (!armedItem) return;
-
-        armedItem.classList.remove('touched');
-        armedItem = null;
-
-        clearTimeout(timer);
-        timer = null;
-    }
-
-    function armItem(item){
-        resetArmed();
-        armedItem = item;
-        item.classList.add('touched');
-        timer = setTimeout(resetArmed, 3000);
-    }
-    
-    function navigate(item){
-        const link = item.querySelector('a[href]');
-        if (link) {
-            window.location.href = link.getAttribute('href');
-            return true;
-        }
-        else return false;
-    }
-
-    items.forEach(item => {
-        item.addEventListener('click', e => e.preventDefault())
-    })
-
-    items.forEach(item => {
-        item.addEventListener('pointerup', (e) => {
-
-            if (e.pointerType !== 'touch') {
-                navigate(item);
-                return;
-            }
-            
-            e.preventDefault();
-            
-            if (armedItem === item) {
-                if (!item.querySelector('a[href]')) resetArmed();
-                navigate(item);
-                return;
-            }
-
-            armItem(item);
-
-        });
+    window.addEventListener('touchstart', function (e) {
+        lastY = e.touches[0].clientY;
     });
 
-    window.addEventListener('pageshow', resetArmed);
+    window.addEventListener('touchmove', function(e) {
+        
+        const deltaY = lastY - e.touches[0].clientY;
+        lastY = e.touches[0].clientY;
+        
+        const newProgress = progress + deltaY * sensitivity;
 
+        if (isStatic && !show){
+            return;
+        } else if (newProgress <= 0) {
+            progress = 0;
+            document.body.style.overflow = '';
+        } else if (newProgress >= 1) {
+            progress = 1;
+            document.body.style.overflow = '';
+        } else {
+            progress = newProgress;
+            document.body.style.overflow = 'hidden';
+        }
+        
+        items.forEach(item => item.style.setProperty('--progress', progress));
 
-});
+    }, {passive : true});
+
+    window.addEventListener('touchend', function() {
+        lastY = null;
+    })
+}
