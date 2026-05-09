@@ -43,6 +43,7 @@ h3 {
     font-weight: normal;
 }
 
+
 p {
     width: 100%;
     text-align: justify;
@@ -99,7 +100,7 @@ p {
     position: absolute;
     top: 105%;
     font-size: 8.5cqmin;
-    transition: background-color 0.5s ease, color 0.5s ease;
+    transition: background-color var(--duration, 0.5s) ease, color var(--duration, 0.5s) ease;
     padding-top: 0.6vmin;  
 
 }
@@ -107,7 +108,7 @@ p {
 .window_index .item img {
     width: 50%;
     object-fit: contain;
-    transition: transform 0.5s ease;
+    transition: transform var(--duration, 0.5s) ease;
     /* background: rgba(89, 0, 255, 0.2); */
 }
 
@@ -218,6 +219,9 @@ p {
     transition: opacity 0.5s ease;
 }
 
+
+
+
                 /* OVERLAY */
 
 .hamburger {
@@ -325,7 +329,7 @@ p {
     top: 105%;
     width: 100%;
     z-index: 1;
-    transition: background-color 0.5s ease, color 0.5s ease;  
+    transition: background-color var(--duration, 0.5s) ease, color var(--duration, 0.5s) ease;  
     /* background: rgba(255, 0, 0, 0.2); */
 }
 
@@ -333,7 +337,7 @@ p {
 .window_home .item img {
     width: 50%;
     object-fit: contain;
-    transition: transform 0.5s ease;   
+    transition: transform var(--duration, 0.5s) ease;   
     /* background: rgba(89, 0, 255, 0.2); */
 }
 
@@ -433,12 +437,64 @@ p {
     display: block;
 }
 
+/* BUTTON */
 
+.button {
+    width: 15vmin;
+    aspect-ratio: 2;
+    background-image: url("../assets/spritesheet.webp");
+    background-repeat: no-repeat;
 
+    background-size: 800% 100%;
+    background-position: 0% 0%;
 
+    border: none;
+    background-color: transparent;
+
+    cursor: pointer;
+    margin-inline: auto;
+
+}
+
+@keyframes buttonVrai {
+    from {
+        background-position: 0% 0%;
+    }
+
+    to {
+        background-position: 100% 0%;
+    }
+}
+
+@keyframes buttonFaux {
+    from {
+        background-position: 100% 0%;
+    }
+
+    to {
+        background-position: 0% 0%;
+    }
+}
+
+.button.vrai {
+    animation: buttonVrai 200ms steps(7) forwards;
+}
+
+.button.faux {
+    animation: buttonFaux 200ms steps(7) forwards;
+}
+
+@media (hover: hover){
+    .button { display: none}
+}
 
 
 /* HOVER & TOUCH */
+
+.item {
+    transition: transform var(--duration, 0.5s) ease, opacity var(--duration, 0.5s) ease;
+}
+
 
 @media (hover: hover){
     .item:hover { --progress: 1; }
@@ -446,6 +502,23 @@ p {
         background-color: black;
         color: #D1774C;
     }
+}
+
+@media (hover: none){
+
+    .item {
+        --progress: 0;
+    }
+
+    .item.stagger {
+        --duration: 1s;
+    }
+
+
+    .item.active {
+        --progress: 1;
+    }
+
 }
 
 
@@ -475,16 +548,13 @@ p {
 
 .bottom-wrapper img:not(:first-child) {
     opacity: var(--progress, 0);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition: opacity var(--duration, 0.5s) ease, transform var(--duration, 0.5s) ease;
 }
 
 .top-wrapper img:not(:first-child) {
     opacity: var(--progress, 0);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transition: opacity var(--duration, 0.5s) ease, transform var(--duration, 0.5s) ease;
 }
-
-
-
 
 
 .titre {
@@ -492,9 +562,11 @@ p {
     background-color: color-mix(in srgb, black calc(var(--progress, 0) * 100%), transparent);
 }
 
-
 .drawn { opacity: calc(1 - var(--progress, 0)); }
 .raw { opacity: var(--progress, 0); }
-.nom { opacity: var(--progress, 0); }
+.nom { 
+    opacity: var(--progress, 0); 
+    transition: opacity var(--duration, 0.5s) ease;
+}
 #titre { opacity: var(--progress, 0); }
 

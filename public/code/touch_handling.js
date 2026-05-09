@@ -1,40 +1,55 @@
 "use strict"
 
-if (window.matchMedia('(hover: none').matches) {
-    let lastY = null;
-    let progress = 0;
-    const items = document.querySelectorAll('.item');
-    const sensitivity = window.matchMedia('(orientation: portrait)').matches ? 0.002 : 0.01;
+document.addEventListener("DOMContentLoaded", () => {
 
-    window.addEventListener('touchstart', function (e) {
-        lastY = e.touches[0].clientY;
-    });
+    const hoverCapable = window.matchMedia("(hover: hover)").matches;
+    
+    // STAGGER
 
-    window.addEventListener('touchmove', function(e) {
+    if (!hoverCapable){
+
+        const staggerItems = document.querySelectorAll(".stagger");
+        if (!staggerItems) return;
+        console.log('staggerItems :>> ', staggerItems);
         
-        const deltaY = lastY - e.touches[0].clientY;
-        lastY = e.touches[0].clientY;
+        staggerItems.forEach((item, i) => {
+            setTimeout(() => {
+                item.classList.add("active");
+            }, (i + 2) * 500);
+        });
+    } 
+
+    // NON_CURRENT
+    
+    if (!hoverCapable){
         
-        const newProgress = progress + deltaY * sensitivity;
-
-        if (isStatic && !show){
-            return;
-        } else if (newProgress <= 0) {
-            progress = 0;
-            document.body.style.overflow = '';
-        } else if (newProgress >= 1) {
-            progress = 1;
-            document.body.style.overflow = '';
-        } else {
-            progress = newProgress;
-            document.body.style.overflow = 'hidden';
-        }
+        const nonCurrentItems = document.querySelectorAll(".non_current");
+        if (!nonCurrentItems) return;
         
-        items.forEach(item => item.style.setProperty('--progress', progress));
-
-    }, {passive : true});
-
-    window.addEventListener('touchend', function() {
-        lastY = null;
-    })
-}
+        nonCurrentItems.forEach((item) => {
+            item.classList.add("active");
+        });
+    }
+    
+    
+    // BUTTON_ITEMS
+    
+    if (!hoverCapable){
+    
+        const buttonItems = document.querySelectorAll(".button_item");
+        const button = document.querySelector(".button")
+        if (!buttonItems || !button) return;
+        
+        button.classList.toggle("faux");
+        
+        button.addEventListener("click", () => {
+            buttonItems.forEach((item) => {
+                item.classList.toggle("active");
+            })
+            button.classList.toggle("vrai");
+            button.classList.toggle("faux");
+        });
+        
+    }
+    
+});
